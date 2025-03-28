@@ -6,7 +6,7 @@
 /*   By: muhahmad <muhahmad@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 14:49:06 by muhahmad          #+#    #+#             */
-/*   Updated: 2025/03/27 14:49:21 by muhahmad         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:35:00 by muhahmad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ char *ft_strdup(const char *str)
     char *dup;
 
     len = ft_strlen(str);
-    dup = (char *)malloc(len * sizeof(char));
+    dup = (char *)malloc((len + 1) * sizeof(char));
     if (dup == NULL)
         return (NULL);
     ft_memcpy(dup, str, len);
+    dup[len] = '\0';
     return (dup);
 }
 
@@ -92,7 +93,7 @@ char *ft_process_line(char **stash)
 
     len = 0;
 
-    if (!*stash)
+    if (!stash && !*stash)
         return (NULL);
     while ((*stash)[len] != '\n' && (*stash)[len] != '\0')
         len++;
